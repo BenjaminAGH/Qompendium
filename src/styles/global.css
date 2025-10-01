@@ -1,0 +1,57 @@
+@layer base, starlight, theme, components, utilities;
+
+@import '@astrojs/starlight-tailwind';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@theme {
+    
+  /* Your preferred text font. Starlight uses a system font stack by default. */
+  --font-sans: 'Atkinson Hyperlegible';
+  /* Your preferred code font. Starlight uses system monospace fonts by default. */
+  --font-mono: 'IBM Plex Mono';
+  
+  
+  /* 50-200: Fondos muy claros, hovers sutiles en modo claro */
+  --color-accent-50: #e6f7f7;   /* Fondo de badges, fondos hover muy suaves */
+  --color-accent-100: #ccefef;  /* Fondos de alertas info, hovers suaves */
+  --color-accent-200: #afd4fe;  /* Icon Theme and to doc button */
+  
+  /* 300-400: Enlaces y elementos interactivos en modo claro */
+  --color-accent-300: #66cfcf;  /* Enlaces hover en modo claro */
+  --color-accent-400: #33bfbf;  /* Enlaces normales en modo claro, botones secundarios */
+  
+  /* 500-600: Color principal de marca, botones primarios */
+  --color-accent-500: #00afaf;  /* PRINCIPAL: Botones primarios, enlaces activos, iconos principales */
+  --color-accent-600: #008c8c;  /* Botones hover, enlaces hover en modo oscuro, estados activos */
+  
+  /* 700-800: Elementos en modo oscuro */
+  --color-accent-700: #006969;  /* Enlaces en modo oscuro, texto sobre fondos claros */
+  --color-accent-800: #004646;  /* Fondos hover en modo oscuro */
+  
+  /* 900-950: Fondos oscuros con acento */
+  --color-accent-900: #002323;  /* Fondos de código con acento, fondos muy oscuros */
+  --color-accent-950: #34659d;  /* Texto de Selección */
+  
+  
+  /* 50-200: Fondos muy claros en modo claro */
+  --color-gray-50: #f0f4f4;   /* Fondo de página principal en modo claro */
+  --color-gray-100: #27323f;  /* Fondo de sidebar, fondos alternos */
+  --color-gray-200: #0db57d;  /* Boton de Modo Claro u oscuro*/
+  
+  /* 300-400: Bordes y texto deshabilitado */
+  --color-gray-300: #ebf4ff;  /* Search Text */
+  --color-gray-400: #14e19d;  /* Texto en Documentación */
+  
+  /* 500-600: Texto secundario */
+  --color-gray-500: #699191;  /* Texto secundario, metadatos, breadcrumbs */
+  --color-gray-600: #547474;  /* Texto secundario más oscuro, subtítulos */
+  
+  /* 700-800: Texto principal */
+  --color-gray-700: #405368;  /* Borde Recuadros */
+  --color-gray-800: #27323f;  /* Navbar Color*/
+  
+  /* 900-950: Fondos oscuros en modo oscuro */
+  --color-gray-900: #1d262f;  /* Fondo principal en modo oscuro, navbar oscuro */
+  --color-gray-950: #1d262f;  /* Fondo más oscuro posible, fondo de código en modo oscuro */
+}
