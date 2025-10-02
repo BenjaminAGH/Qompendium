@@ -1,0 +1,57 @@
+---
+title: Actividad - Capa de Aplicación
+description: Actividad en Packet Tracer - Dns y HTTP
+---
+import { Steps } from '@astrojs/starlight/components';
+
+### Enunciado
+El grupo QuantumUBB requiere implementar un servidor web interno que sea accesible mediante un nombre de dominio para poder promocionar el grupo. Tu tarea es diseñar y configurar una red local en Cisco Packet Tracer que permita a los usuarios acceder al sitio web escribiendo **"quantumubb.cl"** en lugar de utilizar la dirección IP del servidor.
+
+Deberás crear una topología de red compuesta por un **(1)** computador *cliente*, un **(2)** switch y dos servidores: uno que funcionará como **(3)** **servidor DNS** y otro como **(4)** **servidor web**. Todos los dispositivos deben conectarse al switch mediante cables. La red utilizará el esquema de direccionamiento `<192.168.1.0/23>`, donde la PC tendrá la dirección IP `<192.168.1.10>`, el servidor DNS la dirección `<192.168.1.2>` y el servidor web la dirección `<192.168.1.3>`. Todas las configuraciones de IP deben realizarse de forma **estática**, es decir, sin utilizar DHCP.
+
+| Dispositivo    | Dirección IPv4 | Máscara     | Gateway     | DNS        |
+|----------------|--------------|---------------|-------------|------------|
+| **PC0**        | 192.168.1.10 | 255.255.255.0 | 192.168.1.1 | 192.168.1.3|
+| **Server-Web** | 192.168.1.2  | 255.255.255.0 | 192.168.1.1 | NULL       |
+| **Server-Dns** | 192.168.1.3  | 255.255.255.0 | 192.168.1.1 | NULL       |
+
+<p align="center">
+  <img src="/images/tarea1.svg" alt="OSI Model"/>
+</p>
+
+### Página a Mostrar
+
+```html
+// index.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servidor Web - Packet Tracer</title>
+</head>
+<body>
+    <center>
+        <h1>Bienvenido al Servidor Web</h1>
+        <h3>Simulación en Packet Tracer</h3>
+        <hr>
+        
+        <h3>Información del Sistema</h3>
+        
+        <blockquote>
+            <p><i>Este servidor web está funcionando correctamente en Cisco Packet Tracer.</i></p>
+            <p><i>Fecha de configuración: Octubre 2025</i></p>
+        </blockquote>
+                
+        <hr>
+        
+        <p><small>Servidor Web configurado en Cisco Packet Tracer<br>
+        © 2025 - Práctica de CRC</small></p>
+    </center>
+</body>
+</html>
+```
+
+---
+
+

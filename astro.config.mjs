@@ -28,7 +28,9 @@ export default defineConfig({
               label: 'Comuniación de Redes',
               items: [
                 { label: 'Glosario', slug: 'cursos/crc/glosario' },
-                { label: 'Modelos de Referencia', slug: 'cursos/crc/intro' }
+                { label: 'Protocolos de Red', slug: 'cursos/crc/protocolo' },
+                { label: 'Modelos de Referencia', slug: 'cursos/crc/intro' },
+                { label: 'Capa de Aplicación', slug: 'cursos/crc/aplicacion', badge: { text: 'Actividad', variant: 'danger' } },
               ],
             },
           ],
