@@ -1,0 +1,51 @@
+---
+title: Protocolo DHCP
+description: Actividad en Packet Tracer - Dns y HTTP
+author: "Benjamin Guajardo"
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+
+el Protocolo de configuración dinámica de host (DHCP, Dynamic Host Configuration Protocol) permite
+que se le asigne automáticamente a un host una dirección IP. Cabe señalar que es posible configurar DHCP 
+de modo que un host dado reciba la misma dirección IP cada vez que se conecte a la red, o bien a un 
+host puede asignársele una dirección IP temporal que será diferente cada vez que el host se conecte a la red. 
+Además de la asignación de direcciones IP de host, DHCP también permite que un host obtenga información adicional, 
+como por ejemplo su máscara de subred, la dirección de su router del primer salto (gateway) y la dirección de su servidor DNS local.
+
+#### Características principales de DHCP
+- Es un protocolo plug-and-play o zeroconf, lo que significa que los administradores de red no tienen que configurar manualmente cada host en la red.
+- Es un protocolo cliente-servidor, lo que significa que los hosts cliente DHCP y los servidores DHCP intercambian mensajes para asignar direcciones IP y otra información de configuración.
+- Utiliza UDP como protocolo de transporte.
+- Utiliza los puertos 67 y 68 de UDP.
+
+#### Funcionamiento de DHCP
+El proceso de asignación de direcciones IP mediante DHCP consta de cuatro pasos principales, los cuales son:
+
+<Steps>
+
+1. **Descubrimiento (DHCP Discover):** El cliente recién llegado busca un servidor DHCP con el que interactuar.
+    para ello, envía un mensaje de Descubrimiento DHCP al puerto 67 de UDP. Este mensaje se replica en toda la red,
+    ya que el cliente no conoce la dirección IP del servidor DHCP.
+
+    <img src="/images/dhcp1.svg" alt="DHCP"/>
+
+2. **Oferta (DHCP Offer):** El servidor DHCP responde al mensaje de Descubrimiento con un mensaje de Oferta DHCP.
+    Este mensaje contiene una dirección IP que el servidor está dispuesto a asignar al cliente, así como otra información
+    de configuración, como la máscara de subred, la dirección del gateway, la dirección del servidor DNS y el tiempo de arrendamiento
+    (lease time) de la dirección IP.
+
+    <img src="/images/dhcp2.svg" alt="DHCP"/>
+
+3. **Solicitud (DHCP Request):** El cliente recibe la oferta del servidor DHCP y responde con un mensaje de Solicitud DHCP.
+    Este mensaje indica que el cliente acepta la oferta del servidor y solicita la asignación de la dirección IP ofrecida.
+
+    <img src="/images/dhcp3.svg" alt="DHCP"/>
+
+4. **Confirmación (DHCP Acknowledgment):** El servidor DHCP recibe la solicitud del cliente y responde con un mensaje de Confirmación DHCP.
+    Este mensaje confirma que la dirección IP ha sido asignada al cliente y proporciona cualquier otra información de configuración adicional.
+
+    <img src="/images/dhcp4.svg" alt="DHCP"/>
+
+</Steps>

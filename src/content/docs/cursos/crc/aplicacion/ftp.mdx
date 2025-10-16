@@ -1,0 +1,38 @@
+---
+title: Protocolo FTP
+description: Protocolo FTP descripcion
+author: "Benjamin Guajardo"
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+El protocolo de transferencia de archivos (FTP, File Transfer Protocol) es un protocolo de autentificación mediante contraseña, su uso principal es la 
+transferencia de archivos entre sistemas conectados a una red TCP/IP, como Internet. FTP permite a los usuarios subir (upload) y descargar (download)
+archivos desde un servidor FTP, facilitando el intercambio de datos entre computadoras. 
+
+#### Características principales de FTP
+- Utiliza dos canales de comunicación: uno para comandos (puerto 21) y otro para la transferencia de datos (puerto 20).
+- Soporta modos de transferencia activa y pasiva, lo que permite adaptarse a diferentes configuraciones de red y firewalls.
+- Permite la autenticación mediante nombre de usuario y contraseña, aunque también puede configurarse para acceso anónimo.
+- Es un protocolo sin estado, lo que significa que cada sesión es independiente y no mantiene información entre conexiones.
+
+
+#### Funcionamiento de FTP
+El proceso de transferencia de archivos mediante FTP consta de varios pasos principales, los cuales son:
+
+<Steps>
+
+1. **Conexión (Connection):** El cliente FTP se conecta al servidor FTP utilizando el puerto 21.
+    para ello, envía un mensaje de conexión al servidor FTP.
+
+    <img src="/images/ftp1.svg" alt="FTP"/>
+
+2. **Autenticación (Authentication):** El servidor FTP solicita al cliente que se autentique mediante un nombre de usuario y una contraseña.
+
+    <img src="/images/ftp2.svg" alt="FTP"/>
+
+3. **Transferencia de archivos (File Transfer):** Una vez autenticado, el cliente puede solicitar la transferencia de archivos, ya sea subiendo (upload) o bajando (download) archivos del servidor.
+
+    <img src="/images/ftp3.svg" alt="FTP"/>
+
+</Steps>
