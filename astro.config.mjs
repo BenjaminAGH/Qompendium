@@ -30,12 +30,18 @@ export default defineConfig({
                 { label: 'Glosario', slug: 'cursos/crc/glosario' },
                 { label: 'Protocolos de Red', slug: 'cursos/crc/protocolo' },
                 { label: 'Modelos de Referencia', slug: 'cursos/crc/intro' },
-                { label: 'Capa de Aplicación', slug: 'cursos/crc/aplicacion', badge: { text: 'Actividad', variant: 'danger' } },
+                { label: 'Capa de Aplicación',
+                  items: [
+                    { label: 'Actividad 1',  slug: 'cursos/crc/aplicacion/aplicacion', badge: { text: 'Actividad', variant: 'danger' } },
+                    { label: 'Actividad 2',  slug: 'cursos/crc/aplicacion/tarea2', badge: { text: 'Actividad', variant: 'danger' } },
+                  ],
+                },
               ],
             },
           ],
         },
-        { label: 'Proyectos',
+        {
+          label: 'Proyectos',
           badge: { text: 'Quantum', variant: 'success' },
           items: [
             { label: 'Presentación del Apartado', slug: 'proyectos/intro' },          

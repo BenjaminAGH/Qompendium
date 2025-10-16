@@ -1,0 +1,72 @@
+---
+title: Actividad 2 - Capa de Aplicación
+description: Actividad en Packet Tracer - Dns y HTTP
+---
+import { Steps } from '@astrojs/starlight/components';
+
+### Enunciado
+El grupo QuantumUBB requiere cambiar sus servidores a una habitación contigua, por lo que requiere separar la red en dos segmentos diferentes. Para ello, 
+deberás configurar un router que permita la interconexión entre ambas redes y mantener la conectividad entre todos los dispositivos.
+Además, debes agregar tres nuevos servidores: un servidor DHCP, un servidor FTP y un servidor de correo electrónico.
+
+La nueva topología de red se encontrará compuesta por tres **(1)** computadores *clientes*, dos **(2)** switches que separen cada red y cinco servidores: uno que funcionará como **(3)** **servidor DNS**, **(4)** **servidor web**, **(5)** **servidor DHCP**, **(6)** **servidor FTP** y **(7)** **servidor de correo electrónico**. Todos los dispositivos deben conectarse a los switch mediante cables y estos a su vez estarán conectados al router.
+La red utilizará el esquema de direccionamiento `<192.168.1.0/23>`, donde los PC tendrán la dirección IP `<192.168.10.X>`, el servidor DNS la dirección `<192.168.1.3>`, el servidor web la dirección `<192.168.1.2>`, y así sucesivamente.
+
+| Dispositivo    | Dirección IPv4 | Máscara     | Gateway     | DNS        |
+|----------------|--------------|---------------|-------------|------------|
+| **Server-Web** | 192.168.1.2  | 255.255.255.0 | 192.168.1.1 | NULL       |
+| **Server-Dns** | 192.168.1.3  | 255.255.255.0 | 192.168.1.1 | NULL       |
+| **Server-DHCP**| 192.168.1.4  | 255.255.255.0 | 192.168.1.1 | NULL       |
+| **Server-FTP** | 192.168.1.5  | 255.255.255.0 | 192.168.1.1 | NULL       |
+| **Server-Correo**| 192.168.1.6  | 255.255.255.0 | 192.168.1.1 | NULL     |
+
+
+
+<p align="center">
+  <img src="/images/tarea2.png" alt="OSI Model"/>
+</p>
+
+### Configurar el Router
+Para poder configurar el router, debes acceder a la consola del dispositivo y ejecutar los siguientes comandos:
+
+##### 1. Acceder al modo privilegiado y luego al modo de configuración global
+```pkt
+enable
+configure terminal
+```
+
+##### 2. Configurar las interfaces del router
+###### Interfaz para Red 1 (Switch1 - izquierda)
+```pkt
+interface fastEthernet 1/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+```
+###### Interfaz para Red 2 (Switch0 - derecha)
+```pkt
+interface fastEthernet 4/0
+ip address 192.168.2.1 255.255.255.0
+no shutdown
+exit
+
+```
+
+```pkt
+exit
+write memory
+```
+
+##### 3. Configurar el Relay DHCP en la interfaz del router conectada a los PCs
+```
+interface fastEthernet 0/0
+ip helper-address 192.168.1.4
+exit
+```
+
+```pkt
+exit
+write memory
+```
+
+---

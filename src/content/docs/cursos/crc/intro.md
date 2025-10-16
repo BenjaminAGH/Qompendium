@@ -233,11 +233,3 @@ El modelo TCP/IP fue desarrollado por el **Departamento de Defensa de Estados Un
 | **Uso** | Marco de referencia | Implementación real en Internet |
 | **Flexibilidad** | Más rígido | Más flexible |
 | **Enfoque** | Separación estricta de funciones | Funcionalidad integrada |
-
-### Correspondencia entre Capas
-
-**OSI → TCP/IP**
-- Aplicación, Presentación, Sesión → Aplicación
-- Transporte → Transporte
-- Red → Internet
-- Enlace de Datos, Física → Acceso a la Red
