@@ -30,10 +30,12 @@ export default defineConfig({
                 { label: 'Glosario', slug: 'cursos/crc/glosario' },
                 { label: 'Protocolos de Red', slug: 'cursos/crc/protocolo' },
                 { label: 'Modelos de Referencia', slug: 'cursos/crc/intro' },
+                { label: 'Unidad de Datos de Protocolo (PDU)', slug: 'cursos/crc/pdu' },
                 { label: 'Capa de Aplicación',
                   items: [
                     { label: 'Protocolo DHCP',  slug: 'cursos/crc/aplicacion/dhcp' },
                     { label: 'Protocolo FTP',  slug: 'cursos/crc/aplicacion/ftp' },
+                    { label: 'Protocolo HTTP',  slug: 'cursos/crc/aplicacion/http' },
                     { label: 'Actividad 1',  slug: 'cursos/crc/aplicacion/aplicacion', badge: { text: 'Actividad', variant: 'danger' } },
                     { label: 'Actividad 2',  slug: 'cursos/crc/aplicacion/tarea2', badge: { text: 'Actividad', variant: 'danger' } },
                   ],

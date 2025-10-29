@@ -1,0 +1,107 @@
+---
+title: Unidad de Datos de Protocolo
+description: Unidad de Datos de Protocolo (PDU) descripcion
+author: "Benjamin Guajardo"
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+La Unidad de Datos de Protocolo (PDU, Protocol Data Unit) es un término utilizado en redes de computadoras para describir una unidad específica 
+de datos que se intercambia entre dos entidades en una capa particular del modelo OSI o TCP/IP. Cada capa del modelo de red tiene su propia PDU, 
+que contiene tanto los datos que se están transmitiendo como la información de control necesaria para la comunicación.
+
+Cada capa agrega (o elimina) la información de su protocolo a medida que los datos pasan a través de ella. A la PDU se le asignará un nombre 
+específico según la capa en la que se encuentra:
+
+
+<p align="center">
+  <img src="/images/pdu.svg" alt="PDU"/>
+</p>
+
+### Encapsulación
+La encapsulación en redes es el proceso por el cual, al enviar información, cada capa de la pila toma los datos que recibe de la capa superior 
+y los envuelve agregando su propia cabecera para formar su unidad de protocolo (PDU), así, los datos de aplicación se transforman sucesivamente 
+en segmento (Transporte), paquete (Red), trama (Enlace) y finalmente bits (Física) para viajar por el medio. 
+
+<p align="center">
+  <img src="/images/encap.svg" alt="encapsulación"/>
+</p>
+
+<Steps>
+
+1. La capa de Aplicación, Presentación y Sesión del modelo OSI o la capa de Aplicación del modelo TCP/IP toma los datos del usuario como flujos 
+   de datos. A continuación, encapsula los datos y los reenvía a la siguiente capa, es decir, la capa de Transporte.
+
+2. Cuando los datos pasan a la capa de Transporte, esta capa utiliza el flujo de datos procedente de 
+   las capas superiores y lo divide en muchos trozos. Esta capa realiza la encapsulación de los datos añadiendo una cabecera adecuada a cada pieza 
+   de datos denominada segmentos. La cabecera añadida contiene información de secuenciación, por lo que los segmentos vuelven a ensamblarse en el 
+   lado del receptor.
+
+3. Ahora, el trozo de datos con la información de cabecera añadida pasa a la capa de red (modelo OSI) o capa de Internet
+   (modelo TCP/IP). Esta capa toma los segmentos de la capa anterior y realiza la encapsulación añadiendo la información de enrutamiento necesaria 
+   para que los datos se entreguen correctamente. Tras la encapsulación, los datos se convierten en un datagrama o paquete en esta capa.
+
+4. El paquete de datos pasa ahora a la capa de enlace de datos en el modelo . Esta capa toma el paquete y lo encapsula adjuntándole una 
+   cabecera y un pie de página. En este punto, la cabecera tendrá información de conmutación para garantizar que los datos llegan correctamente al 
+   componente de hardware receptor. En cambio, el trailer tendrá datos relacionados con la detección y mitigación de errores. En esta etapa, los datos 
+   se convierten en una trama, que pasa a la capa final
+
+5. La trama de datos procedente de la capa de enlace de datos pasa ahora a la capa física en el modelo TCP/IP u OSI. Esta capa la encapsula convirtiendo 
+   los datos en bits o señales de datos.
+
+</Steps>
+
+
+### Desencapsulación
+La desencapsulación es el recorrido inverso en el equipo receptor, cada capa lee, verifica y retira su cabecera/tráiler, recuperando la carga útil 
+y entregándola hacia arriba hasta  la aplicación. Este mecanismo permite modularidad (cada capa se ocupa de su función), interoperabilidad entre 
+tecnologías distintas y diagnóstico preciso con herramientas como Wireshark.
+
+<p align="center">
+  <img src="/images/desencap.svg" alt="desencapsulación"/>
+</p>
+
+<Steps>
+
+1. Los datos encapsulados en la capa física, llamados bits o señales de datos, serán tomados por la capa para desencapsularlos. Los datos se 
+   convierten ahora en una trama de datos, que será reenviada a la capa superior o capa de Enlace de Datos.
+
+2. La capa de Enlace de Datos toma ahora estas tramas de datos y las desencapsula. La capa también comprueba si la cabecera de la trama de 
+   datos corresponde al hardware correcto. Si la trama de datos corresponde a un destino erróneo o incorrecto, será descartada. Si es correcto, 
+   la capa comprobará el inicio de la trama de datos en busca de información. Si encuentra algún error en el inicio o en los datos, solicitará 
+   la retransmisión de los datos. Pero si el inicio tiene la información correcta, la capa lo desencapsulará para formar un datagrama o paquete 
+   de datos y lo reenviará a la capa superior.
+
+3. El paquete de datos procedente de la capa de enlace de datos pasa ahora a la capa de Internet (modelo TCP/IP) o a la capa de red (modelo OSI). 
+   Esta capa toma el paquete para desencapsularlo y formar un segmento de datos. La capa comprueba la cabecera del paquete para saber si está enrutado 
+   al destino correcto. Si no está correctamente encaminado, el paquete de datos será descartado. Pero si tiene la información de enrutamiento correcta, 
+   la capa lo desencapsulará y lo enviará a la capa superior, es decir, a la capa de Transporte.
+
+4. Los segmentos de datos procedentes de la capa de Internet o de la capa de Red pasan a la capa de Transporte. 
+   La capa de Transporte toma los segmentos y comprueba su información de cabecera, A continuación, empieza a reensamblar los segmentos y a formar flujos 
+   de datos, que luego pasan a la capa o capas superiores.
+
+5. Los flujos de datos de la capa de Transporte llegan a la capa de Aplicación en el modelo TCP/IP. En el modelo OSI, llega a la capa de Sesión, a la capa 
+   de Presentación y, finalmente, a la capa de Aplicación. La(s) capa(s) tomará(n) los flujos de datos y los desencapsulará(n) reenviando únicamente los datos 
+   específicos de la aplicación al ordenador o a las aplicaciones del receptor. 
+
+</Steps>
+
+### Demostración
+<img
+  src="/images/encap.gif"
+  alt="demo"
+  style={{ borderRadius: '12px' }}
+/>
+
+### Comportamiento de las PDU en las capas OSI
+
+| Capa           | Nombre       | Descripción   |
+|----------------|--------------|---------------|
+| **1**     | Física       | PDU bits (1s o 0s) para la transmisión de datos en la red.|
+| **2**     | Enlace Datos | PDU tramas y contiene: Datos Originales con encabezado TCP/UDP y Dirección MAC de origen y destino. |
+| **3**     | Red          | PDU paquetes y contiene: Datos Originales con encabezado IP y Dirección IP de origen y destino. |
+| **4**     | Transporte   | PDU segmento (TCP) o datagrama (UDP) y contiene: Datos Originales con encabezado TCP/UDP e Información de puerto de origen y destino. |
+| **5**     | Sesión       | PDU datos |
+| **6**     | Presentación | PDU datos |
+| **7**     | Aplicación   | PDU datos originales entregados por aplicaciones|
