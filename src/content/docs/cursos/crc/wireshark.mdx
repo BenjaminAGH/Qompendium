@@ -51,19 +51,59 @@ Dentro de los más comunes están:
 Utilizando Wireshark, captura el tráfico de red en tu entorno local. Una vez hayas comprendido cómo funciona 
 la herramienta, generaremos tráfico de red utilizando los protocolos mencionados anteriormente.
 
-nslookup www.ubiobio.cl
+<Steps>
+  <ol>
+    <li>
+      Obten la dirección IP de tu equipo.
+      ```bash
+      ip -4 addr
+      ```
+      <img
+        src="/images/ip.png"
+        alt="ip"
+        style={{ borderRadius: '12px' }}
+      />
+    </li>
+    <li>
+      Inicia Wireshark y selecciona la interfaz de red que estás utilizando (Wi-Fi/wlan0 o Ethernet/eth0).
+      <img
+        src="/images/wire.png"
+        alt="wire"
+        style={{ borderRadius: '12px' }}
+      />
+    </li>
+    <li>
+      Ahora vamos a generar trafico de red de los protocolos mencionados anteriormente, empezando con DNS.
+      ```bash
+        nslookup www.ubiobio.cl
+      ```
+      para capturar solo el tráfico DNS, utiliza el siguiente filtro en Wireshark:
+      ```
+        dns && ip.addr == TU_IP_LOCAL
+      ```
+    </li>
+    <li>
+      Luego, generaremos tráfico HTTP.
+      ```bash
+        curl http://info.cern.ch
+      ```
+      para capturar solo el tráfico HTTP, utiliza el siguiente filtro en Wireshark:
+      ```
+        http && ip.addr == TU_IP_LOCAL
+      ```
+    </li>
+    <li>
+      Finalmente, generaremos tráfico FTP.
+      ```bash
+        ftp ftp.dlptest.com
+      ```
+      `Usuario: dlpuser`
+      `**Contraseña: rNrKYTX9g7z3RgJRmxWuGHbeu`
 
-curl http://info.cern.ch
-
-ftp ftp.dlptest.com
-
-Usuario: dlpuser
-Contraseña: rNrKYTX9g7z3RgJRmxWuGHbeu
-
-filtros
-
-dns
-http
-ftp
-
-agrega tu ip local en los filtros para observar solo tu tráfico
+      para capturar solo el tráfico FTP, utiliza el siguiente filtro en Wireshark:
+      ```
+        ftp && ip.addr == TU_IP_LOCAL
+      ```
+    </li>
+  </ol>
+</Steps>
