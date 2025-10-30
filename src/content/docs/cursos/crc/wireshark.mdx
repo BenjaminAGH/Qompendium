@@ -1,0 +1,69 @@
+---
+title: Wireshark
+description: Taller de Wireshark para análisis de tráfico de red
+author: "Benjamin Guajardo"
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Wireshark es una herramienta open-source de análisis de tráfico de red ampliamente utilizada en el campo de la administración de redes y la seguridad 
+informática. Permite capturar y examinar los datos que fluyen a través de una red en tiempo real, lo que la convierte en una herramienta invaluable 
+para la resolución de problemas de red, la monitorización del rendimiento y la detección de intrusiones. 
+<a href="https://www.wireshark.org/download.html" target="_blank" rel="noopener noreferrer">Descargar Wireshark ↗</a>
+
+### Filtrado de tráfico
+Wireshark ofrece potentes capacidades de filtrado que permiten a los usuarios centrarse en tipos específicos de tráfico o protocolos. Los 
+filtros pueden aplicarse tanto durante la captura como en el análisis posterior de los datos capturados. Algunos ejemplos de filtros comunes incluyen:
+
+| Filtro        | Descripción                           |
+|---------------|---------------------------------------|
+| **ip.addr == 192.168.X.X**  | Dirección IP específica |
+| **ip.src == 192.168.X.X**   | Dirección IP de origen  |
+| **ip.dst == 192.168.X.X**   | Dirección IP de destino |
+| **tcp.port == 80**          | Tráfico HTTP            |
+| **udp.port == 53**          | Tráfico DNS             |
+| **http**                    | Todo el tráfico HTTP    |
+| **dns**                     | Todo el tráfico DNS     |
+| **tls**                     | Todo el tráfico HTTPS   |
+| **(ip.src == 192.168.X.X) && (tcp.port == 443)** | Tráfico HTTPS desde una IP específica |
+| **(ip.src == 192.168.X.X) \|\| (ip.dst == 192.168.X.X)** | Todo el tráfico hacia o desde una IP específica |
+| **not tcp**                 | Excluir todo el tráfico TCP |
+
+---
+<img
+  src="/images/ws.png"
+  alt="demo"
+  style={{ borderRadius: '12px' }}
+/>
+
+## Actividad
+A lo largo de la ayudantía hemos mencionado diferentes protocolos y tipos de tráfico que podemos encontrar en una red. 
+Dentro de los más comunes están:
+
+| Protocolo        | Descripción     | Puerto |
+|------------------|-----------------|--------|
+| HTTP             | Protocolo de transferencia de hipertexto, utilizado para la navegación web. | 80     |
+| HTTPS            | Versión segura de HTTP, cifra la comunicación. | 443    |
+| DNS              | Sistema de nombres de dominio, traduce nombres de dominio a direcciones IP. | 53     |
+| FTP              | Protocolo de transferencia de archivos. | 21     |
+| DHCP             | Protocolo de configuración dinámica de host, asigna direcciones IP automáticamente. | 67, 68 |
+
+Utilizando Wireshark, captura el tráfico de red en tu entorno local. Una vez hayas comprendido cómo funciona 
+la herramienta, generaremos tráfico de red utilizando los protocolos mencionados anteriormente.
+
+nslookup www.ubiobio.cl
+
+curl http://info.cern.ch
+
+ftp ftp.dlptest.com
+
+Usuario: dlpuser
+Contraseña: rNrKYTX9g7z3RgJRmxWuGHbeu
+
+filtros
+
+dns
+http
+ftp
+
+agrega tu ip local en los filtros para observar solo tu tráfico
