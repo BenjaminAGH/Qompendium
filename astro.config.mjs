@@ -30,7 +30,7 @@ export default defineConfig({
                 { label: 'Glosario', slug: 'cursos/crc/glosario' },
                 { label: 'Protocolos de Red', slug: 'cursos/crc/protocolo' },
                 { label: 'Modelos de Referencia', slug: 'cursos/crc/intro' },
-                { label: 'Unidad de Datos de Protocolo (PDU)', slug: 'cursos/crc/pdu' },
+                { label: 'Unidad de Datos de Protocolo', slug: 'cursos/crc/pdu' },
                 { label: 'Wireshark', slug: 'cursos/crc/wireshark',  badge: { text: 'Actividad', variant: 'danger' } },
                 { label: 'Capa de Aplicación',
                   items: [
