@@ -1,0 +1,34 @@
+---
+title: Tarea Análisis de Red
+description: Tarea de Análisis de Red
+author: "Benjamin Guajardo"
+---
+
+# Ejercicio: Análisis de tráfico sospechoso en la red
+
+En la red de la organización se ha establecido una política estricta de navegación: **solo se permite el acceso a los sitios indicados en la tabla de direcciones permitidas**. Cualquier consulta DNS o solicitud HTTP/HTTPS hacia dominios distintos a los autorizados debe considerarse potencialmente sospechosa.
+
+El Equipo TI ha capturado, mediante Wireshark, un extracto de tráfico donde se observan consultas DNS y solicitudes HTTP a distintos dominios, incluyendo `info.cern.ch`, `google.com` y otros servicios externos. Como analista de seguridad, su tarea es determinar si existe tráfico que viole la política definida y justificar sus conclusiones a partir del análisis del tráfico capturado.
+
+## Direcciones de destino permitidas por la política de la organización
+
+| Servicio              | Dominio permitido | Tipo de acceso |
+|----------------------|------------------|----------------|
+| Sitio institucional  | `info.cern.ch`   | HTTP           |
+| Buscador autorizado  | `google.com`     | HTTP / HTTPS   |
+
+<img
+  src="/images/traffic.png"
+  alt="demo"
+  style={{ borderRadius: '12px' }}
+/>
+
+## Actividades
+
+1. A partir del extracto de captura proporcionado (salida de Wireshark), liste al menos dos consultas DNS de distinto dominio (Link: ejemplo.com). Indique para cada una el dominio consultado y si corresponde a un dominio permitido o no permitido según la tabla.
+
+2. Identifique el o los dominios que representan tráfico no autorizado (no debe ser ninguno de los listados en la tabla).
+
+3. Indique si existen solicitudes HTTP/HTTPS y anote su número de dispositivo de origen y dispositivo de destino.
+
+4. Explique con sus propias palabras qué son los protocolos HTTP y DNS, dando un ejemplo de cómo funcionarían.

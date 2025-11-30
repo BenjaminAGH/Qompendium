@@ -1,0 +1,23 @@
+---
+title: Protocolo DNS
+description: Protocolo DNS descripcion
+author: "Benjamin Guajardo"
+---
+
+El protocolo DNS (Domain Name System) es un protocolo de red que permite la traducción de nombres 
+de dominio (como www.quantumubb.cl) en direcciones IP (como 192.168.1.1). Funciona principalmente 
+como un directorio de nombres (base de datos) de dominio y direcciones IP, dentro de un servidor sobre el que se 
+realizan solicitudes y la posterior traducción.
+
+## Características principales de DNS
+- Utiliza el protocolo UDP como protocolo de transporte.
+- Utiliza los puertos 53 de UDP.
+- Otros protocolos como HTTP y SMTP, emplean habitualmente DNS para traducir los nombres de host suministrados por el usuario en direcciones IP.
+
+## Funcionamiento de DNS
+Cuando un cliente quiere acceder a un dominio, Primero revisa si ya conoce la respuesta porque la guardó antes. 
+Si no, pide ayuda a un servidor encargado de buscarla. Ese servidor, si tampoco la sabe, va preguntando a otros 
+servidores que sí conocen la información: unos que indican la zona (por ejemplo, los sitios que terminan en .cl) 
+y otros que guardan la dirección exacta del sitio al que quieres entrar. Cuando encuentra la respuesta, te la devuelve 
+y tu navegador puede conectarse al sitio correcto. Todo este proceso suele ocurrir en milisegundos y es esencial 
+para que la web funcione de forma fluida y transparente para el usuario.
