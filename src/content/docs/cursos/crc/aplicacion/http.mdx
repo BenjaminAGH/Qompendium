@@ -4,3 +4,68 @@ description: Protocolo HTTP descripcion
 author: "Benjamin Guajardo"
 ---
 
+El protocolo HTTP (Hypertext Transfer Protocol) es un protocolo de comunicación que permite la transferencia 
+de datos entre un **cliente** y un **servidor**. Principalmente, se cimenta en el uso de páginas web, las cuales
+constan de objetos, es decir, archivos archivos que pueden direccionarse a través de una URL.
+
+**Ejemplo:** https://www.quantumubb.cl/images/http.svg
+
+donde:
+- https://www.quantumubb.cl/ es la URL del servidor/host.
+- /images/http.svg es el archivo que se desea obtener.
+
+## Características principales de HTTP
+- Utiliza el protocolo TCP como protocolo de transporte.
+- Utiliza el puerto 80 para la comunicación.
+- Es un protocolo sin estado: cada solicitud cliente-servidor se procesa de forma independiente y no se conserva información sobre transacciones previas.
+- Puede establecer conexiones persistentes o no persistentes. En una conexión persistente, cliente y servidor mantienen el enlace abierto para enviar múltiples solicitudes y respuestas. En una conexión no persistente, la conexión se cierra después de completar la transferencia de datos.
+
+## Funcionamiento de HTTP
+HTTP funciona mediante un modelo cliente-servidor en el que un cliente envía una solicitud HTTP y
+el servidor responde con el recurso solicitado o con información sobre el resultado de la operación. 
+Cada intercambio sigue una estructura definida: el cliente envía un método (como GET o POST), una 
+ruta y encabezados opcionales, y el servidor devuelve un código de estado, encabezados y un cuerpo 
+de respuesta que puede contener desde una página HTML hasta datos en formato JSON.
+
+### Estructura de una solicitud HTTP
+
+| Componente            | Descripción                                                         |
+|-----------------------|---------------------------------------------------------------------|
+| Línea de solicitud    | Contiene el método, la ruta y la versión (ej: `GET /home HTTP/1.1`) |
+| Encabezados (Headers) | Información adicional: Host, User-Agent, Accept, Content-Type, etc. |
+| Cuerpo (Body)         | Datos enviados al servidor (usado en POST, PUT, PATCH).             |
+
+#### Tipos de Solicitud HTTP
+
+El protocolo HTTP define varios métodos para sus solicitudes. Aquí se presentan los más comunes:
+
+| Método  | Descripción                                        | Uso típico                                |
+|---------|----------------------------------------------------|--------------------------------------------|
+| **GET** | Solicita un recurso sin modificarlo.               | Recuperar páginas, imágenes, datos de APIs |
+| **POST**| Envía datos al servidor para crear o procesar algo.| Formularios, creación de registros         |
+| **PUT** | Reemplaza por completo un recurso existente.       | Actualizaciones completas                  |
+| **PATCH**| Modifica parcialmente un recurso.                 | Actualizaciones parciales vía API          |
+| **DELETE**| Elimina un recurso.                              | Borrado de datos                           |
+| **HEAD**| Igual que GET pero sin cuerpo en la respuesta.     | Verificar disponibilidad o metadatos       |
+| **OPTIONS**| Indica los métodos permitidos para un recurso.  | CORS, descubrimiento de capacidades        |
+
+
+
+### Estructura de una respuesta HTTP
+
+| Componente            | Descripción                                                           |
+|-----------------------|-----------------------------------------------------------------------|
+| Línea de estado       | Incluye la versión y el código de estado (ej: `HTTP/1.1 200 OK`)      |
+| Encabezados (Headers) | Metadatos: Content-Type, Date, Server, Content-Length, Set-Cookie...  |
+| Cuerpo (Body)         | Contenido devuelto: HTML, JSON, archivos, imágenes, etc.              |
+
+##### Códigos de estado HTTP
+
+El protocolo HTTP define varios códigos de estado para indicar el resultado de una solicitud, los más recurrentes son:
+
+| Código | Descripción                                        |
+|--------|----------------------------------------------------|
+| **200** | OK: La solicitud se ha completado con éxito.       |
+| **404** | Not Found: El recurso solicitado no se encuentra.  |
+| **500** | Internal Server Error: El servidor ha encontrado un error interno. |
+
